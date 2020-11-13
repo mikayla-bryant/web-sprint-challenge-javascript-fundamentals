@@ -62,6 +62,7 @@ const zooAnimals = [
     console.log(displayNames);
   }
   
+  animalNames(zooAnimals);
 
   /* 🦁🦁🦁 Request 2: .map() 🦁🦁🦁
   The zoos need a list of all their animal's names (animal_name only) converted to lower case. Using map, create a new array of strings named lowCaseAnimalNames, each string following this pattern: "jackal, asiatic". Log the resut.
@@ -85,6 +86,8 @@ const zooAnimals = [
     )];
     console.log(lowPopulationAnimals);
   }
+
+  lowerCaseNames(zooAnimals);
   
 
   /* 🦁🦁🦁 Request 4: .reduce() 🦁🦁🦁
@@ -93,15 +96,14 @@ const zooAnimals = [
 
  let populationTotal = 0;
   function USApop(array){
-    populationTotal = data.reduce(function(accumulator, object){
+    populationTotal = array.reduce(function(accumulator, object){
       return accumulator + object.population;
     }, 0)
     return populationTotal;
   }
   
-  population(zooAnimals);
-  console.log(populationTotal);
-  }
+  
+USApop(zooAnimals);
   
   
   // 🦁🦁🦁 Callbacks 🦁🦁🦁  
