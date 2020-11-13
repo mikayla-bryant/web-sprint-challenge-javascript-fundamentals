@@ -18,15 +18,20 @@ myFunction();
 //🚀🚀🚀 ⬇️ 📝 Explanation ⬇️ 📝 🚀🚀🚀: 
 
 
-
+/* The nested variable can access the nested function because it is reaching from inside of the block scope, out towards the function scope, allowing for a closure to occur.*/
 
 
 /* 🚀🚀🚀 Task 2: Counter 🚀🚀🚀 */
 /* Create a function called `summation` that accepts a parameter and uses a counter to return the summation of that number. For example, `summation(4)` should return 10 because 1+2+3+4 is 10. Note, you may use a for loop for this function if you wish */
-function summation(/*Your Code Here*/) {
-  /*Your Code Here*/
-
+function summation(number) {
+  let sum = 0;
+  for(let i = 1; i <= number; i++){
+    sum += i;
   }
+    return sum;
+  }
+
+  summation(4);
  
 
 // 🦁🦁🦁 Topic 2: ADVANCED Array Methods 🦁🦁🦁
@@ -48,32 +53,54 @@ const zooAnimals = [
   /* 🦁🦁🦁 Request 1: .forEach() 🦁🦁🦁
   The zoos want to display both the scientific name and the animal name in front of the habitats. Populate the displayNames array with only the animal_name and scientific_name of each animal. displayNames will be an array of strings, and each string should follow this pattern: "Name: Jackal, asiatic, Scientific: Canis aureus."
   */
-  function animalNames(/*Your Code Here*/){
-    /*Your Code Here*/
+  function animalNames(array){
+    const displayNames = [array.forEach(function(element, index){
+      console.log(`Name: ${element.animal_name}`);
+      console.log(`Scientific: ${element.scientific_name}`);
+    }
+    )];
+    console.log(displayNames);
   }
   
 
   /* 🦁🦁🦁 Request 2: .map() 🦁🦁🦁
   The zoos need a list of all their animal's names (animal_name only) converted to lower case. Using map, create a new array of strings named lowCaseAnimalNames, each string following this pattern: "jackal, asiatic". Log the resut.
   */
-  function lowerCaseNames(/*Your Code Here*/){
-    /*Your Code Here*/
+  function lowerCaseNames(array){
+    const lowCaseAnimalNames = [array.map(function(object){
+      return object.animal_name.toLowerCase();
+    }
+    )];
+    console.log(lowCaseAnimalNames);
   }
   
   
   /* 🦁🦁🦁 Request 3: .filter() 🦁🦁🦁
   The zoos are concerned about animals with a lower population count. Using filter, create a new array of objects called lowPopulationAnimals which contains only the animals with a population less than 5.
   */
-  function lowPopulationAnimals(/*Your Code Here*/){
-    /*Your Code Here*/
+  function lowPopulationAnimals(array){
+    const lowPopulationAnimals = [zooAnimals.filter(function(object){
+      return (object.population < 5);
+    }
+    )];
+    console.log(lowPopulationAnimals);
   }
   
 
   /* 🦁🦁🦁 Request 4: .reduce() 🦁🦁🦁
   The zoos need to know their total animal population across the United States. Find the total population from all the zoos using the .reduce() method. Remember the reduce method takes two arguments: a callback (which itself takes two args), and an initial value for the count.
   */
-  function USApop(/*Your Code Here*/){
-    /*Your Code Here*/
+
+ let populationTotal = 0;
+  function USApop(array){
+    populationTotal = data.reduce(function(accumulator, object){
+      return accumulator + object.population;
+    }, 0)
+    return populationTotal;
+  }
+  
+  population(zooAnimals);
+  console.log(populationTotal);
   }
   
   
@@ -84,31 +111,22 @@ const zooAnimals = [
     * The last parameter accepts a callback
     * The consume function should return the invocation of cb, passing a and b into cb as arguments
   */
-  function consume(/*Your Code Here */){
-    /*Your Code Here */
-  }
- 
+ consume = (a, b, cb) => cb(a, b);
   
   /* 🦁🦁🦁 Step 2: Create several functions to callback with consume(); 🦁🦁🦁 */
  // 🦁🦁🦁 Create a function named add that returns the sum of two numbers 🦁🦁🦁
-  function add(/*Your Code Here */){
-    /*Your Code Here*/
-  }
-// 🦁🦁🦁 Create a function named multiply that returns the product of two numbers 🦁🦁🦁
-  function multiply(/*Your Code Here */){
-   /*Your Code Here */
-  }
+ add = (num1, num2) => num1 + num2;
 
+// 🦁🦁🦁 Create a function named multiply that returns the product of two numbers 🦁🦁🦁
+multiply = (num1, num2) => num1 * num2;
  // 🦁🦁🦁 Create a function named greeting that accepts a first and last name and returns "Hello first-name last-name, nice to meet you!" 🦁🦁🦁
-  function greeting(/*Your Code Here */){
-   return /*Your Code Here */
-  }
+ greeting = (firstName, lastName) => `Hello ${firstName} ${lastName}, nice to meet you!`;
   
   // 🦁🦁🦁 Step 3: Check your work by un-commenting the following calls to consume(): 🦁🦁🦁 
   // ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️ ⬇️
-  // console.log(consume(2, 2, add)); // 4
-  // console.log(consume(10, 16, multiply)); // 160
-  // console.log(consume("Mary", "Poppins", greeting)); // Hello Mary Poppins, nice to meet you!
+  console.log(consume(2, 2, add)); // 4
+  console.log(consume(10, 16, multiply)); // 160
+  console.log(consume("Mary", "Poppins", greeting)); // Hello Mary Poppins, nice to meet you!
   
   
 // 🦁💪 Stretch: If you haven't already, convert your array method callbacks into arrow functions 🦁💪
